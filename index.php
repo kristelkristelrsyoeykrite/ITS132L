@@ -1,13 +1,9 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
-try {
-    $dsn = getenv("DATABASE_URL");<?php
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
-// ✅ Neon PostgreSQL credentials
 $host = "ep-ancient-rice-a14g7v5e-pooler.ap-southeast-1.aws.neon.tech";
 $dbname = "ITS132L";
 $user = "neondb_owner";
@@ -25,12 +21,3 @@ try {
 }
 ?>
 
-    $pdo = new PDO($dsn);
-    $stmt = $pdo->query("SELECT * FROM redditpostsdata LIMIT 10");
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    header('Content-Type: application/json');
-    echo json_encode($results);
-} catch (PDOException $e) {
-    echo json_encode(["error" => $e->getMessage()]);
-}
-?>
