@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: reddit-db-site
+    env: php
+    plan: free
+    buildCommand: ""
+    startCommand: ""
+    staticPublishPath: public
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://neondb_owner:npg_R9dyxkUEPAZ6@ep-ancient-rice-a14g7v5e-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
