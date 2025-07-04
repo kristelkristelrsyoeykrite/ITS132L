@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>University Reddit Posts</title>
+</head>
+<body>
+  <h2>Latest Reddit Posts</h2>
+  <ul id="postList"></ul>
+
+  <script>
+    fetch("https://YOUR-PHP-HOST.com/fetch-posts.php") // update this to your PHP hosting URL
+      .then(res => res.json())
+      .then(data => {
+        const ul = document.getElementById("postList");
+        data.forEach(post => {
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${post.university_name}</strong>: ${post.title}`;
+          ul.appendChild(li);
+        });
+      })
+      .catch(err => {
+        console.error("Failed to fetch posts:", err);
+      });
+  </script>
+</body>
+</html>
